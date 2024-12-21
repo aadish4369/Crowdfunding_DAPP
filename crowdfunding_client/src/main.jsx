@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Sepolia } from "@thirdweb-dev/chains";
 import { StateContextProvider } from './context';
-import {  ThirdwebProvider } from '@thirdweb-dev/react';
-
+import { ThirdwebProvider } from '@thirdweb-dev/react';
 
 import App from './App';
 import './index.css';
@@ -12,15 +11,14 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-<ThirdwebProvider 
-      activeChain={ Sepolia } 
-      clientId="dbc5acdae3739eba2506e310ceb0a60e" // You can get a client id from dashboard settings
-    >
+  <ThirdwebProvider 
+    activeChain={Sepolia} 
+    clientId={process.env.REACT_APP_CLIENT_ID} 
+  >
     <Router>
       <StateContextProvider>
-      <App />
+        <App />
       </StateContextProvider>
-      
     </Router>
-  </ThirdwebProvider> 
-)
+  </ThirdwebProvider>
+);
